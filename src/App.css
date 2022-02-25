@@ -1,0 +1,18 @@
+.CardHolder{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Card {
+  width: 450px;
+  height: 90px;
+  background-color: whitesmoke;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px;
+}
