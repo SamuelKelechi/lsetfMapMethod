@@ -1,53 +1,52 @@
-import React from "react";
-import './App.css'
+import React,{useState} from "react";
+import './App.css';
 import Logo from "./Image/logo.svg"
 import Babe from "./Image/img.png"
 
 
 function App (){
+// A State Capturing Inputs 
+  const [text, setText] = useState("");
 
-  const lsetf = [
-    {
-      name: "biola",
-      age: 15,
-      sex: "Female"
-    },
-    {
-      name: "victor",
-      age: 30,
-      sex: "Male"
-    },
+//A state holding our datas
+  const [lsetf, setLsetf] = useState([]);
 
-    {
-      name: "james",
-      age: 40,
-      sex: "Male"    
-    },
-    {
-      name: "Wura",
-      age: 20,
-      sex: "Female"
-    },
-    {
-      name: "Grace",
-      age: 26,
-      sex: "Female"
-    },
-    {
-      name: "Akeem",
-      age: 40,
-      sex: "Male"
-    },
-  ]
+// Function for Posting
+  const Post = () => {
+    const items = {
+      id : lsetf.length + 1,
+      name: text,
+    };
+    setLsetf([...lsetf, items]);
+  // Responsible for Removing items in our input
+    setText("");
+  }
 
+  console.log(lsetf)
+  console.log(text)
 
   return(
     <div className="CardHolder">
+      <br />
+{/* OUR INPUT */}
+      <input value={text} onChange={(e)=>{setText(e.target.value)
+         console.log(text)
+      }} placeholder="Input Name"/>
+      <br />
+
+{/* BUTTON FOR CALLING OUR POST FUNCTION */}
+      <button onClick={()=>{
+        Post()
+        console.log('Have Posted')
+      }}>Post</button>
+
+{/* This is where our Datas are being Mapped */}
       {lsetf.map((props)=>(
         <div className="Card">
+          <div>{props.id}.</div>
           <div>Name:{props.name}</div>
-          <div>Age:{props.age}</div>
-          <div>Sex:{props.sex}</div>
+          {/* <div>Age:{props.age}</div>
+          <div>Sex:{props.sex}</div> */}
         </div>
       ))}
     </div>
