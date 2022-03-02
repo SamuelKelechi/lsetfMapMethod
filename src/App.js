@@ -22,6 +22,12 @@ function App (){
     setText("");
   }
 
+  // Fuction to Delete Items
+  function DeleteItems (id) {
+    const del = lsetf.filter((el)=> el.id !== id);
+    setLsetf(del);
+  }
+
   console.log(lsetf)
   console.log(text)
 
@@ -44,9 +50,12 @@ function App (){
       {lsetf.map((props)=>(
         <div className="Card">
           <div>{props.id}.</div>
-          <div>Name:{props.name}</div>
-          {/* <div>Age:{props.age}</div>
-          <div>Sex:{props.sex}</div> */}
+          <div style={{marginLeft:"20px"}}>{props.name}</div>
+          <div style={{display:"flex", flex:"1", justifyContent:"flex-end"}}>
+            <button onClick={()=>{
+              DeleteItems(props.id)
+            }}>Delete</button>
+          </div>
         </div>
       ))}
     </div>
